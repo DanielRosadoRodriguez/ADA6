@@ -4,8 +4,7 @@ public class Testing {
         DAO dao = new DAO();
         try {
             DoublyLinkedList list = dao.read();
-            list.displayList();
-            list.setColumnToCompare("pH");
+            list.printAlcohol();
         } catch (Exception e) {
             e.printStackTrace();
         }  

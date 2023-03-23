@@ -55,6 +55,13 @@ public class DoublyLinkedList {
             first = first.getNext();
         }
     }
+    public void printAlcohol(){
+        DoublyLink current = first;
+        while(current != null){
+            System.out.println(current.getWine().getAlcohol());
+            current = current.getNext();
+        }
+    }
 
  
 }
