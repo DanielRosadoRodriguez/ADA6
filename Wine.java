@@ -36,40 +36,6 @@ public class Wine {
         this.color = color;
     }
 
-    public Object getValueToCompare(String colName) throws NoSuchFieldException, SecurityException{
-        switch(colName){
-            case "fixedAcidity":
-                return fixedAcidity;
-            case "volatileAcidity":
-                return volatileAcidity;
-            case "citricAcid":
-                return citricAcid;
-            case "residualSugar":
-                return residualSugar;
-            case "chlorides":
-                return chlorides;
-            case "freeSulfurDioxide":
-                return freeSulfurDioxide;
-            case "totalSulfurDioxide":
-                return totalSulfurDioxide;
-            case "density":
-                return density;
-            case "pH":
-                return pH;
-            case "sulphates":
-                return sulphates;
-            case "alcohol":
-                return alcohol;
-            case "quality":
-                return quality;
-            case "color":
-                return color;
-            default:
-                return false;
-        }
-    }
-
-
     public float getFixedAcidity() {
         return fixedAcidity;
     }
@@ -153,7 +119,7 @@ public class Wine {
     }
     public void setValueToCompare(String fieldToCompare){
         try{
-            this.valueToCompare = getValueToCompare(fieldToCompare);
+            this.valueToCompare = determineValueToCompare(fieldToCompare);
         }
         catch(NoSuchFieldException e){
             System.out.println("Error: " + e);
@@ -164,4 +130,36 @@ public class Wine {
     }
 
     
+    public Object determineValueToCompare(String colName) throws NoSuchFieldException, SecurityException{
+        switch(colName){
+            case "fixedAcidity":
+                return fixedAcidity;
+            case "volatileAcidity":
+                return volatileAcidity;
+            case "citricAcid":
+                return citricAcid;
+            case "residualSugar":
+                return residualSugar;
+            case "chlorides":
+                return chlorides;
+            case "freeSulfurDioxide":
+                return freeSulfurDioxide;
+            case "totalSulfurDioxide":
+                return totalSulfurDioxide;
+            case "density":
+                return density;
+            case "pH":
+                return pH;
+            case "sulphates":
+                return sulphates;
+            case "alcohol":
+                return alcohol;
+            case "quality":
+                return quality;
+            case "color":
+                return color;
+            default:
+                return false;
+        }
+    }
 }

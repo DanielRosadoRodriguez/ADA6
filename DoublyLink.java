@@ -1,6 +1,5 @@
 public class DoublyLink{
     private Wine data;
-    private Object valueToCompare;
     private DoublyLink next;
     private DoublyLink previous;
 
@@ -8,9 +7,6 @@ public class DoublyLink{
         this.data = d;
     }
 
-    public void setValueToCompare(String colName) throws NoSuchFieldException, SecurityException{
-        this.valueToCompare = data.getValueToCompare(colName);
-    }
     public Wine getWine(){
         return data;
     }
@@ -28,12 +24,6 @@ public class DoublyLink{
     }
     public void setPrevious(DoublyLink previous) {
         this.previous = previous;
-    }
-    public Object getValueToCompare() {
-        return valueToCompare;
-    }
-    public void setValueToCompare(Object valueToCompare) {
-        this.valueToCompare = valueToCompare;
     }
 
 }

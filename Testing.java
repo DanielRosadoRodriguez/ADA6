@@ -5,7 +5,7 @@ public class Testing {
         try {
             DoublyLinkedList list = dao.read();
             list.displayList();
-            
+            list.setColumnToCompare("pH");
         } catch (Exception e) {
             e.printStackTrace();
         }  

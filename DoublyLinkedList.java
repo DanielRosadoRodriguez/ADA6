@@ -32,7 +32,7 @@ public class DoublyLinkedList {
         }
         System.out.print("first->");
         while (current != null) {
-            System.out.print(current.getWine() + "->");
+            System.out.print(current.getWine().getValueToCompare() + "->");
             current = current.getNext();
         }
         System.out.println("last");
@@ -49,5 +49,12 @@ public class DoublyLinkedList {
     public int getSize() {
         return size;
     }
+    public void setColumnToCompare(String colToCompare){
+        while(first != null){
+            first.getWine().setValueToCompare(colToCompare);
+            first = first.getNext();
+        }
+    }
+
  
 }
