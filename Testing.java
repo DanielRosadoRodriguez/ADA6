@@ -4,13 +4,11 @@ public class Testing {
         DAO dao = new DAO();
         try {
             DoublyLinkedList list = dao.read();
-            list.SetColumnToCompare("quality");
-            list.mergeSort();
-            list.displayList();
+            list.SetColumnToCompare("color");
+            list.sort();
         } catch (Exception e) {
             e.printStackTrace();
         }  
     }
-    
     
 }

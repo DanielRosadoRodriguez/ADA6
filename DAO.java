@@ -7,8 +7,6 @@ import java.io.IOException;
  * Clase DAO
  */
 public class DAO {
-    private String[] headers; 
-
     public DoublyLinkedList read() throws Exception {
         DoublyLinkedList list = new DoublyLinkedList();
         try {
@@ -17,7 +15,6 @@ public class DAO {
             String line;
             line = br.readLine(); // Reads the first line (headers row)
             String[] datos = line.split(",");
-            this.headers = datos;
             while ((line = br.readLine()) != null) {
                 datos = line.split(",");
                 float fixedAcidity = Float.parseFloat(datos[0]);
@@ -35,8 +32,8 @@ public class DAO {
                 String color = datos[12];
                 Wine wine = new Wine(fixedAcidity, volatileAcidity, citricAcid, residualSugar, chlorides,
                         freeSulfurDioxide, totalSulfurDioxide, density, pH, sulphates, alcohol, quality, color);
-                        
-                list.add(wine);                                
+
+                list.add(wine);
             }
             br.close();
         } catch (IOException e) {
@@ -45,18 +42,16 @@ public class DAO {
         return list;
     }
 
-
-
-    public void writeCSV(DoublyLinkedList list) throws IOException {
+    public void writeCSV(DoublyLinkedList list, String fileName) throws IOException {
         // Crear archivo CSV para escritura
-        FileWriter csvWriter = new FileWriter("sorted.csv");
+        FileWriter csvWriter = new FileWriter(fileName);
 
         // Escribir encabezado de columnas
 
-        for(String header : this.headers){
-            csvWriter.append(header);
-            csvWriter.append(",");
-        }
+        String[] headers = { "Fixed Acidity", "Volatile Acidity", "Citric Acid", "Residual Sugar", "Chlorides",
+                "Free Sulfur Dioxide", "Total Sulfur Dioxide", "Density", "pH", "Sulphates", "Alcohol", "Quality",
+                "Color" };
+        csvWriter.write(String.join(",", headers) + "\n");
 
         // Escribir datos de cada fila
 
@@ -105,13 +100,9 @@ public class DAO {
 
             current = current.getNext();
         }
-  
-        
 
         // Cerrar archivo CSV
-        csvWriter.flush();
         csvWriter.close();
     }
 
 }
-

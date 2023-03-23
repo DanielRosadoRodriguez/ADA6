@@ -9,9 +9,43 @@ public class DoublyLinkedList {
         last = null;
         size = 0;
     }
-    public void quickSortFloat() {
+
+    public void sort() {
+        try {
+
+            long tiempo = getTiempoDeEjecucion(() -> {
+                quickSort();
+            });
+            System.out.println("Tiempo de ejecucion quicksort: " + tiempo + "ms");
+            new DAO().writeCSV(this, "quicksort.csv");
+
+            clear();
+            tiempo = getTiempoDeEjecucion(() -> {
+                mergeSort();
+            });
+            System.out.println("Tiempo de ejecucion mergesort: " + tiempo + "ms");
+            new DAO().writeCSV(this, "mergesort.csv");
+
+            tiempo = getTiempoDeEjecucion(() -> {
+                quickSort();
+            });
+            System.out.println("Tiempo de ejecucion quicksort: " + tiempo + "ms");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public long getTiempoDeEjecucion(Runnable runnable) {
+        long tiempoInicio = System.currentTimeMillis();
+        runnable.run();
+        long tiempoFinal = System.currentTimeMillis();
+        return tiempoFinal - tiempoInicio;
+    }
+
+    public void quickSort() {
         quickSortRecursive(first, last);
     }
+
     private void quickSortRecursive(DoublyLink left, DoublyLink right) {
         if (left == null || right == null || left == right || left.getPrevious() == right) {
             return;
@@ -21,11 +55,12 @@ public class DoublyLinkedList {
         quickSortRecursive(left, pivot.getPrevious());
         quickSortRecursive(pivot.getNext(), right);
     }
+
     private DoublyLink partition(DoublyLink left, DoublyLink right) {
         DoublyLink pivot = right;
         DoublyLink i = left.getPrevious();
         for (DoublyLink j = left; j != right; j = j.getNext()) {
-            if ((float)j.getWine().getValueToCompare() < (float)pivot.getWine().getValueToCompare()) {
+            if ((float) j.getWine().getValueToCompare() < (float) pivot.getWine().getValueToCompare()) {
                 i = (i == null) ? left : i.getNext();
                 swap(i, j);
             }
@@ -39,6 +74,7 @@ public class DoublyLinkedList {
         if (first != null) {
             first = mergeSortRecursive(first);
         }
+
     }
 
     private DoublyLink mergeSortRecursive(DoublyLink head) {
@@ -64,7 +100,7 @@ public class DoublyLinkedList {
             return left;
         }
 
-        if ((float)left.getWine().getValueToCompare() < (float)right.getWine().getValueToCompare()) {
+        if ((float) left.getWine().getValueToCompare() < (float) right.getWine().getValueToCompare()) {
             left.setNext(merge(left.getNext(), right));
             left.getNext().setPrevious(left);
             left.setPrevious(null);
@@ -92,7 +128,6 @@ public class DoublyLinkedList {
                 fast = fast.getNext();
             }
         }
-
         return slow;
     }
 
@@ -108,7 +143,7 @@ public class DoublyLinkedList {
         size++;
     }
 
-    public void SetColumnToCompare(String columnToCompare){
+    public void SetColumnToCompare(String columnToCompare) {
         DoublyLink current = first;
         while (current != null) {
             current.getWine().setValueToCompare(columnToCompare);
@@ -121,7 +156,7 @@ public class DoublyLinkedList {
         while (current != null) {
             DoublyLink next = current.getNext();
             while (next != null) {
-                if ((float) current.getWine().getValueToCompare() > (float)next.getWine().getValueToCompare()) {
+                if ((float) current.getWine().getValueToCompare() > (float) next.getWine().getValueToCompare()) {
                     swap(current, next);
                 }
                 next = next.getNext();
@@ -171,5 +206,10 @@ public class DoublyLinkedList {
 
     public int getSize() {
         return size;
+    }
+    public void clear() {
+        first = null;
+        last = null;
+        size = 0;
     }
 }

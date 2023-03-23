@@ -34,7 +34,6 @@ public class Wine {
         this.alcohol = alcohol;
         this.quality = quality;
         this.color = color;
-        this.valueToCompare = this.alcohol;
     }
 
     public Object getValueToCompare() {
@@ -79,7 +78,7 @@ public class Wine {
             this.valueToCompare = this.quality;
             break;
         case "color":
-            System.out.println("actualmente no se puede comparar por color");
+            this.valueToCompare = (float)(this.color.hashCode());
             break;
         default:
             System.out.println("column not found");;
