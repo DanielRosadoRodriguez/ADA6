@@ -37,6 +37,11 @@ public class Wine {
         this.valueToCompare = this.alcohol;
     }
 
+    public float getValueToCompare() {
+        return (float) this.valueToCompare;
+    }
+
+
     public float getFixedAcidity() {
         return fixedAcidity;
     }
@@ -115,50 +120,6 @@ public class Wine {
     public void setColor(String color) {
         this.color = color;
     }
-
-    public void setValueToCompare(String fieldToCompare){
-        try{
-            this.valueToCompare = determineValueToCompare(fieldToCompare);
-        }
-        catch(NoSuchFieldException e){
-            System.out.println("Error: " + e);
-        }
-    }
-    public Object getValueToCompare(){
-        return valueToCompare;
-    }
-
     
-    public Object determineValueToCompare(String colName) throws NoSuchFieldException, SecurityException{
-        switch(colName){
-            case "fixedAcidity":
-                return fixedAcidity;
-            case "volatileAcidity":
-                return volatileAcidity;
-            case "citricAcid":
-                return citricAcid;
-            case "residualSugar":
-                return residualSugar;
-            case "chlorides":
-                return chlorides;
-            case "freeSulfurDioxide":
-                return freeSulfurDioxide;
-            case "totalSulfurDioxide":
-                return totalSulfurDioxide;
-            case "density":
-                return density;
-            case "pH":
-                return pH;
-            case "sulphates":
-                return sulphates;
-            case "alcohol":
-                return alcohol;
-            case "quality":
-                return quality;
-            case "color":
-                return color;
-            default:
-                return false;
-        }
-    }
+  
 }

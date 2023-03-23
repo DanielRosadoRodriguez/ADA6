@@ -21,12 +21,13 @@ public class DoublyLinkedList {
         last = newLink;
         size++;
     }
-    public void bubbleSort() {
+
+    public void simpleSort() {
         DoublyLink current = first;
         while (current != null) {
             DoublyLink next = current.getNext();
             while (next != null) {
-                if (((Float)current.getWine().getValueToCompare()).compareTo((Float)next.getWine().getValueToCompare()) > 0) {
+                if (current.getWine().getValueToCompare() > next.getWine().getValueToCompare()) {
                     swap(current, next);
                 }
                 next = next.getNext();
@@ -35,33 +36,10 @@ public class DoublyLinkedList {
         }
     }
 
-
-
-    public void swap(DoublyLink a, DoublyLink b) {
-        if (a == b) {
-            return;
-        }
-        DoublyLink temp = a.getPrevious();
-        a.setPrevious(b.getPrevious());
-        b.setPrevious(temp);
-        temp = a.getNext();
-        a.setNext(b.getNext());
-        b.setNext(temp);
-        if (a.getNext() != null) {
-            a.getNext().setPrevious(a);
-        } else {
-            last = a;
-        }
-        if (b.getNext() != null) {
-            b.getNext().setPrevious(b);
-        } else {
-            last = b;
-        }
-        if (b.getNext() != null) {
-            b.getNext().setPrevious(b);
-        } else {
-            last = b;
-        }
+    public void swap(DoublyLink current, DoublyLink next) {
+        Wine temp = current.getWine();
+        current.setWine(next.getWine());
+        next.setWine(temp);
     }
 
     /**
@@ -81,23 +59,8 @@ public class DoublyLinkedList {
         System.out.println("last");
     }
 
-    public DoublyLink getFirst() {
-        return this.first;
-    }
-
     public boolean isEmpty() {
         return first == null;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setColumnToCompare(String colToCompare) {
-        while (first != null) {
-            first.getWine().setValueToCompare(colToCompare);
-            first = first.getNext();
-        }
     }
 
     public void printAlcohol() {
@@ -108,4 +71,11 @@ public class DoublyLinkedList {
         }
     }
 
+    public DoublyLink getFirst() {
+        return first;
+    }
+
+    public int getSize() {
+        return size;
+    }
 }

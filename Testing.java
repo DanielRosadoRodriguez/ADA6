@@ -4,7 +4,8 @@ public class Testing {
         DAO dao = new DAO();
         try {
             DoublyLinkedList list = dao.read();
-            list.bubbleSort();
+            list.displayList();
+            list.simpleSort();
             list.displayList();
         } catch (Exception e) {
             e.printStackTrace();
