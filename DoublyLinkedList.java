@@ -32,10 +32,14 @@ public class DoublyLinkedList {
         }
         System.out.print("first->");
         while (current != null) {
-            System.out.print(current.getValueToCompare() + "->");
+            System.out.print(current.getWine() + "->");
             current = current.getNext();
         }
         System.out.println("last");
+    }
+
+    public DoublyLink getFirst(){
+        return this.first;
     }
 
     public boolean isEmpty() {

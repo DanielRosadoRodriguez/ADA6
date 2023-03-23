@@ -8,7 +8,7 @@ public class DoublyLink{
         this.data = d;
     }
 
-    public void setValueToCompare(String colName){
+    public void setValueToCompare(String colName) throws NoSuchFieldException, SecurityException{
         this.valueToCompare = data.getValueToCompare(colName);
     }
     public Wine getWine(){

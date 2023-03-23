@@ -1,3 +1,9 @@
+import java.lang.reflect.Field;
+
+/**
+ * Clase mamattora italiannis wine
+ */
+
 public class Wine {
     private float fixedAcidity;
     private float volatileAcidity;
@@ -12,9 +18,10 @@ public class Wine {
     private float alcohol;
     private float quality;
     private String color;
+    private Object valueToCompare;
     public Wine(float fixedAcidity, float volatileAcidity, float citricAcid, float residualSugar, float chlorides,
             float freeSulfurDioxide, float totalSulfurDioxide, float density, float pH, float sulphates, float alcohol,
-            float quality, String color) {
+            float quality, String color, String valueToCompare) throws NoSuchFieldException, SecurityException {
         this.fixedAcidity = fixedAcidity;
         this.volatileAcidity = volatileAcidity;
         this.citricAcid = citricAcid;
@@ -28,9 +35,10 @@ public class Wine {
         this.alcohol = alcohol;
         this.quality = quality;
         this.color = color;
+        this.valueToCompare = getValueToCompare(valueToCompare);
     }
 
-    public Object getValueToCompare(String colName){
+    public Object getValueToCompare(String colName) throws NoSuchFieldException, SecurityException{
         switch(colName){
             case "fixedAcidity":
                 return fixedAcidity;
