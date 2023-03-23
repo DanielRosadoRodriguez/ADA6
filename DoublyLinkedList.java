@@ -9,6 +9,92 @@ public class DoublyLinkedList {
         last = null;
         size = 0;
     }
+    public void quickSortFloat() {
+        quickSortRecursive(first, last);
+    }
+    private void quickSortRecursive(DoublyLink left, DoublyLink right) {
+        if (left == null || right == null || left == right || left.getPrevious() == right) {
+            return;
+        }
+
+        DoublyLink pivot = partition(left, right);
+        quickSortRecursive(left, pivot.getPrevious());
+        quickSortRecursive(pivot.getNext(), right);
+    }
+    private DoublyLink partition(DoublyLink left, DoublyLink right) {
+        DoublyLink pivot = right;
+        DoublyLink i = left.getPrevious();
+        for (DoublyLink j = left; j != right; j = j.getNext()) {
+            if ((float)j.getWine().getValueToCompare() < (float)pivot.getWine().getValueToCompare()) {
+                i = (i == null) ? left : i.getNext();
+                swap(i, j);
+            }
+        }
+        i = (i == null) ? left : i.getNext();
+        swap(i, right);
+        return i;
+    }
+
+    public void mergeSort() {
+        if (first != null) {
+            first = mergeSortRecursive(first);
+        }
+    }
+
+    private DoublyLink mergeSortRecursive(DoublyLink head) {
+        if (head == null || head.getNext() == null) {
+            return head;
+        }
+
+        DoublyLink middle = getMiddle(head);
+        DoublyLink nextToMiddle = middle.getNext();
+        middle.setNext(null);
+
+        DoublyLink left = mergeSortRecursive(head);
+        DoublyLink right = mergeSortRecursive(nextToMiddle);
+
+        return merge(left, right);
+    }
+
+    private DoublyLink merge(DoublyLink left, DoublyLink right) {
+        if (left == null) {
+            return right;
+        }
+        if (right == null) {
+            return left;
+        }
+
+        if ((float)left.getWine().getValueToCompare() < (float)right.getWine().getValueToCompare()) {
+            left.setNext(merge(left.getNext(), right));
+            left.getNext().setPrevious(left);
+            left.setPrevious(null);
+            return left;
+        } else {
+            right.setNext(merge(left, right.getNext()));
+            right.getNext().setPrevious(right);
+            right.setPrevious(null);
+            return right;
+        }
+    }
+
+    private DoublyLink getMiddle(DoublyLink head) {
+        if (head == null) {
+            return null;
+        }
+
+        DoublyLink slow = head;
+        DoublyLink fast = head.getNext();
+
+        while (fast != null) {
+            fast = fast.getNext();
+            if (fast != null) {
+                slow = slow.getNext();
+                fast = fast.getNext();
+            }
+        }
+
+        return slow;
+    }
 
     public void add(Wine wine) {
         DoublyLink newLink = new DoublyLink(wine);

@@ -5,7 +5,7 @@ public class Testing {
         try {
             DoublyLinkedList list = dao.read();
             list.SetColumnToCompare("quality");
-            list.simpleSortFloat();
+            list.mergeSort();
             list.displayList();
         } catch (Exception e) {
             e.printStackTrace();
