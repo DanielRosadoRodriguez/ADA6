@@ -21,7 +21,7 @@ public class Wine {
     private Object valueToCompare;
     public Wine(float fixedAcidity, float volatileAcidity, float citricAcid, float residualSugar, float chlorides,
             float freeSulfurDioxide, float totalSulfurDioxide, float density, float pH, float sulphates, float alcohol,
-            float quality, String color, String valueToCompare) throws NoSuchFieldException, SecurityException {
+            float quality, String color) throws NoSuchFieldException, SecurityException {
         this.fixedAcidity = fixedAcidity;
         this.volatileAcidity = volatileAcidity;
         this.citricAcid = citricAcid;
@@ -35,7 +35,6 @@ public class Wine {
         this.alcohol = alcohol;
         this.quality = quality;
         this.color = color;
-        this.valueToCompare = getValueToCompare(valueToCompare);
     }
 
     public Object getValueToCompare(String colName) throws NoSuchFieldException, SecurityException{
@@ -70,6 +69,7 @@ public class Wine {
                 return false;
         }
     }
+
 
     public float getFixedAcidity() {
         return fixedAcidity;
@@ -149,5 +149,20 @@ public class Wine {
     public void setColor(String color) {
         this.color = color;
     }
+    public void setValueToCompare(Object valueToCompare){
+        this.valueToCompare = valueToCompare;
+    }
+    public void setValueToCompare(String fieldToCompare){
+        try{
+            this.valueToCompare = getValueToCompare(fieldToCompare);
+        }
+        catch(NoSuchFieldException e){
+            System.out.println("Error: " + e);
+        }
+    }
+    public Object getValueToCompare(){
+        return valueToCompare;
+    }
+
     
 }

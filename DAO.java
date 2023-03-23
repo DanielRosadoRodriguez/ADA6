@@ -13,9 +13,7 @@ public class DAO {
     public DoublyLinkedList read() throws Exception {
         DoublyLinkedList list = new DoublyLinkedList();
         try {
-            System.out.println("Ingrese el campo de comparacion");
-            Scanner input = new Scanner(System.in);
-            String valueToCompare = input.nextLine();
+
             BufferedReader br = new BufferedReader(new FileReader("ADA6\\dataset\\Wine_Quality_Data.csv"));
             String line;
             line = br.readLine(); // Reads the first line (headers row)
@@ -37,8 +35,7 @@ public class DAO {
                 float quality = Float.parseFloat(datos[11]);
                 String color = datos[12];
                 Wine wine = new Wine(fixedAcidity, volatileAcidity, citricAcid, residualSugar, chlorides,
-                        freeSulfurDioxide, totalSulfurDioxide, density, pH, sulphates, alcohol, quality, color, valueToCompare);
-                System.out.println(wine.getValueToCompare(valueToCompare));
+                        freeSulfurDioxide, totalSulfurDioxide, density, pH, sulphates, alcohol, quality, color);
                         
                 list.add(wine);                                
             }

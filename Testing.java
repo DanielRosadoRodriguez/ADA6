@@ -4,9 +4,9 @@ public class Testing {
         DAO dao = new DAO();
         try {
             DoublyLinkedList list = dao.read();
-  
+            list.displayList();
+            
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }  
     }
