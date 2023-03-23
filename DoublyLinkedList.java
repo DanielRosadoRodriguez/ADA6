@@ -10,7 +10,6 @@ public class DoublyLinkedList {
         size = 0;
     }
 
-
     public void add(Wine wine) {
         DoublyLink newLink = new DoublyLink(wine);
         if (isEmpty()) {
@@ -22,8 +21,54 @@ public class DoublyLinkedList {
         last = newLink;
         size++;
     }
+
+    public void bubbleSort() {
+        DoublyLink current = first;
+        DoublyLink next = first.getNext();
+        while (current != null) {
+            while (next != null) {
+                if ((float) current.getWine().getValueToCompare() > (float) next.getWine().getValueToCompare()) {
+                    swap(current, next);
+                }
+                next = next.getNext();
+            }
+            current = current.getNext();
+            if (current != null)
+                next = current.getNext();
+        }
+
+    }
+
+    public void swap(DoublyLink a, DoublyLink b) {
+        if (a == b) {
+            return;
+        }
+        DoublyLink temp = a.getPrevious();
+        a.setPrevious(b.getPrevious());
+        b.setPrevious(temp);
+        temp = a.getNext();
+        a.setNext(b.getNext());
+        b.setNext(temp);
+        if (a.getNext() != null) {
+            a.getNext().setPrevious(a);
+        } else {
+            last = a;
+        }
+        if (b.getNext() != null) {
+            b.getNext().setPrevious(b);
+        } else {
+            last = b;
+        }
+        if (b.getNext() != null) {
+            b.getNext().setPrevious(b);
+        } else {
+            last = b;
+        }
+    }
+
     /**
      * imprime el contenido de la lista
+     * 
      */
     public void displayList() {
         DoublyLink current = first;
@@ -38,7 +83,7 @@ public class DoublyLinkedList {
         System.out.println("last");
     }
 
-    public DoublyLink getFirst(){
+    public DoublyLink getFirst() {
         return this.first;
     }
 
@@ -49,19 +94,20 @@ public class DoublyLinkedList {
     public int getSize() {
         return size;
     }
-    public void setColumnToCompare(String colToCompare){
-        while(first != null){
+
+    public void setColumnToCompare(String colToCompare) {
+        while (first != null) {
             first.getWine().setValueToCompare(colToCompare);
             first = first.getNext();
         }
     }
-    public void printAlcohol(){
+
+    public void printAlcohol() {
         DoublyLink current = first;
-        while(current != null){
+        while (current != null) {
             System.out.println(current.getWine().getAlcohol());
             current = current.getNext();
         }
     }
 
- 
 }

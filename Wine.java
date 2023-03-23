@@ -34,6 +34,7 @@ public class Wine {
         this.alcohol = alcohol;
         this.quality = quality;
         this.color = color;
+        this.valueToCompare = this.alcohol;
     }
 
     public float getFixedAcidity() {
@@ -114,9 +115,7 @@ public class Wine {
     public void setColor(String color) {
         this.color = color;
     }
-    public void setValueToCompare(Object valueToCompare){
-        this.valueToCompare = valueToCompare;
-    }
+
     public void setValueToCompare(String fieldToCompare){
         try{
             this.valueToCompare = determineValueToCompare(fieldToCompare);
