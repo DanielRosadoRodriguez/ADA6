@@ -79,7 +79,7 @@ public class Wine {
             this.valueToCompare = this.quality;
             break;
         case "color":
-            this.valueToCompare = this.color;
+            System.out.println("actualmente no se puede comparar por color");
             break;
         default:
             System.out.println("column not found");;
