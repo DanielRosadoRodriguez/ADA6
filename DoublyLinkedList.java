@@ -22,12 +22,12 @@ public class DoublyLinkedList {
         size++;
     }
 
-    public void simpleSort() {
+    public void simpleSortFloat() {
         DoublyLink current = first;
         while (current != null) {
             DoublyLink next = current.getNext();
             while (next != null) {
-                if (current.getWine().getValueToCompare() > next.getWine().getValueToCompare()) {
+                if ((float) current.getWine().getValueToCompare() > (float)next.getWine().getValueToCompare()) {
                     swap(current, next);
                 }
                 next = next.getNext();

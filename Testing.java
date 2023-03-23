@@ -5,7 +5,7 @@ public class Testing {
         try {
             DoublyLinkedList list = dao.read();
             list.displayList();
-            list.simpleSort();
+            list.simpleSortFloat();
             list.displayList();
         } catch (Exception e) {
             e.printStackTrace();

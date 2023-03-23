@@ -37,8 +37,8 @@ public class Wine {
         this.valueToCompare = this.alcohol;
     }
 
-    public float getValueToCompare() {
-        return (float) this.valueToCompare;
+    public Object getValueToCompare() {
+        return this.valueToCompare;
     }
 
 
