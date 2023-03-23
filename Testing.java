@@ -4,7 +4,7 @@ public class Testing {
         DAO dao = new DAO();
         try {
             DoublyLinkedList list = dao.read();
-            list.displayList();
+            list.SetColumnToCompare("quality");
             list.simpleSortFloat();
             list.displayList();
         } catch (Exception e) {

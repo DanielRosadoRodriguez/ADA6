@@ -22,6 +22,14 @@ public class DoublyLinkedList {
         size++;
     }
 
+    public void SetColumnToCompare(String columnToCompare){
+        DoublyLink current = first;
+        while (current != null) {
+            current.getWine().setValueToCompare(columnToCompare);
+            current = current.getNext();
+        }
+    }
+
     public void simpleSortFloat() {
         DoublyLink current = first;
         while (current != null) {

@@ -40,6 +40,51 @@ public class Wine {
     public Object getValueToCompare() {
         return this.valueToCompare;
     }
+    public void setValueToCompare(String columnToCompare){
+        switch (columnToCompare) {
+        case "fixedAcidity":
+            this.valueToCompare = this.fixedAcidity;
+            break;
+        case "volatileAcidity":
+            this.valueToCompare = this.volatileAcidity;
+            break;
+        case "citricAcid":
+            this.valueToCompare = this.citricAcid;
+            break;
+        case "residualSugar":
+            this.valueToCompare = this.residualSugar;
+            break;
+        case "chlorides":
+            this.valueToCompare = this.chlorides;
+            break;
+        case "freeSulfurDioxide":
+            this.valueToCompare = this.freeSulfurDioxide;
+            break;
+        case "totalSulfurDioxide":
+            this.valueToCompare = this.totalSulfurDioxide;
+            break;
+        case "density":
+            this.valueToCompare = this.density;
+            break;
+        case "pH":
+            this.valueToCompare = this.pH;
+            break;
+        case "sulphates":
+            this.valueToCompare = this.sulphates;
+            break;
+        case "alcohol":
+            this.valueToCompare = this.alcohol;
+            break;
+        case "quality":
+            this.valueToCompare = this.quality;
+            break;
+        case "color":
+            this.valueToCompare = this.color;
+            break;
+        default:
+            System.out.println("column not found");;
+        }
+    }
 
 
     public float getFixedAcidity() {
