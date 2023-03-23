@@ -21,23 +21,21 @@ public class DoublyLinkedList {
         last = newLink;
         size++;
     }
-
     public void bubbleSort() {
         DoublyLink current = first;
-        DoublyLink next = first.getNext();
         while (current != null) {
+            DoublyLink next = current.getNext();
             while (next != null) {
-                if ((float) current.getWine().getValueToCompare() > (float) next.getWine().getValueToCompare()) {
+                if (((Float)current.getWine().getValueToCompare()).compareTo((Float)next.getWine().getValueToCompare()) > 0) {
                     swap(current, next);
                 }
                 next = next.getNext();
             }
             current = current.getNext();
-            if (current != null)
-                next = current.getNext();
         }
-
     }
+
+
 
     public void swap(DoublyLink a, DoublyLink b) {
         if (a == b) {
