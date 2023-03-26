@@ -42,6 +42,43 @@ public class DoublyLinkedList {
         return tiempoFinal - tiempoInicio;
     }
 
+    //BINARY INSERTION SORT
+
+    public int binarySearch(Wine item, int low, int high){
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if ((Float)item.getValueToCompare() == (Float)get(mid).getValueToCompare())
+                return mid + 1;
+            else if ((Float)item.getValueToCompare() > (Float)get(mid).getValueToCompare())
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return low;
+    }
+
+    public void binaryInsertionSort(int n) throws Exception {
+        int i, loc = 0, j;
+        Wine selected;
+    
+        for (i = 1; i < n; ++i) {
+            j = i - 1;
+            selected = get(i);
+            
+    
+            // encuentra la posicion donde debe ser insertado el elemento
+            loc = binarySearch(selected, 0, j);
+    
+            // Hace un corrimiento a la derecha de los datos
+            while (j >= loc) {
+                updateNodeWithPosition(j+1, get(j));
+                j--;
+            }
+            updateNodeWithPosition(j+1, selected);
+        }
+    }
+
+    //QUICKSORT
     public void quickSort() {
         quickSortRecursive(first, last);
     }
@@ -69,6 +106,8 @@ public class DoublyLinkedList {
         swap(i, right);
         return i;
     }
+
+    //MERGE SORT
 
     public void mergeSort() {
         if (first != null) {
@@ -192,13 +231,13 @@ public class DoublyLinkedList {
         return first == null;
     }
 
-    public void printAlcohol() {
-        DoublyLink current = first;
-        while (current != null) {
-            System.out.println(current.getWine().getAlcohol());
-            current = current.getNext();
-        }
-    }
+    // public void printAlcohol() {
+    //     DoublyLink current = first;
+    //     while (current != null) {
+    //         System.out.println(current.getWine().getAlcohol());
+    //         current = current.getNext();
+    //     }
+    // }
 
     public DoublyLink getFirst() {
         return first;
@@ -212,4 +251,33 @@ public class DoublyLinkedList {
         last = null;
         size = 0;
     }
+
+    public Wine get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        DoublyLink current = first;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        return current.getWine();
+    }
+
+    public void updateNodeWithPosition(int nodePosition, Wine newValue) throws Exception {
+        DoublyLink current = first;
+        if (isEmpty())
+            throw new Exception("La lista está vacía");
+        try {
+            for (int i = 0; i < nodePosition; i++) {
+                if (current == null) {
+                    throw new Exception("La posición no existe en la lista");
+                }
+                current = current.getNext();
+            }
+            current.setWine(newValue);
+        } catch (NullPointerException e) {
+            throw new Exception("La posición no existe en la lista");
+        }
+    }
+    
 }
