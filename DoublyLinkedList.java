@@ -190,19 +190,7 @@ public class DoublyLinkedList {
         }
     }
 
-    public void simpleSortFloat() {
-        DoublyLink current = first;
-        while (current != null) {
-            DoublyLink next = current.getNext();
-            while (next != null) {
-                if ((float) current.getWine().getValueToCompare() > (float) next.getWine().getValueToCompare()) {
-                    swap(current, next);
-                }
-                next = next.getNext();
-            }
-            current = current.getNext();
-        }
-    }
+
 
     public void swap(DoublyLink current, DoublyLink next) {
         Wine temp = current.getWine();
