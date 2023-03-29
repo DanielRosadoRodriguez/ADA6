@@ -64,8 +64,6 @@ public class DoublyLinkedList {
         for (i = 1; i < n; ++i) {
             j = i - 1;
             selected = get(i);
-            
-    
             // encuentra la posicion donde debe ser insertado el elemento
             loc = binarySearch(selected, 0, j);
     
@@ -120,14 +118,11 @@ public class DoublyLinkedList {
         if (head == null || head.getNext() == null) {
             return head;
         }
-
         DoublyLink middle = getMiddle(head);
         DoublyLink nextToMiddle = middle.getNext();
         middle.setNext(null);
-
         DoublyLink left = mergeSortRecursive(head);
         DoublyLink right = mergeSortRecursive(nextToMiddle);
-
         return merge(left, right);
     }
 
@@ -191,7 +186,6 @@ public class DoublyLinkedList {
     }
 
 
-
     public void swap(DoublyLink current, DoublyLink next) {
         Wine temp = current.getWine();
         current.setWine(next.getWine());
@@ -219,13 +213,6 @@ public class DoublyLinkedList {
         return first == null;
     }
 
-    // public void printAlcohol() {
-    //     DoublyLink current = first;
-    //     while (current != null) {
-    //         System.out.println(current.getWine().getAlcohol());
-    //         current = current.getNext();
-    //     }
-    // }
 
     public DoublyLink getFirst() {
         return first;
