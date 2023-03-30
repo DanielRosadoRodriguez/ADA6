@@ -30,17 +30,16 @@ public class DoublyLinkedList {
         askToPrintCSV();
         printMetrics();
     }
-    public void printMetrics(){
- 
+
+    public void printMetrics() {
+
     }
 
-
-
-
-    public void askToPrintCSV(){
+    public void askToPrintCSV() {
         printCsv(this.quickSorted, "quickSorted.csv");
         printCsv(this.mergeSorted, "mergeSorted.csv");
     }
+
     public void printCsv(DoublyLinkedList list, String filename) {
         DAO dao = new DAO();
         try {
