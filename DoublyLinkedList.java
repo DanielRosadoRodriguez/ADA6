@@ -13,11 +13,14 @@ public class DoublyLinkedList {
     public void sort() {
         QuickSort quickSort = new QuickSort(this);
         DoublyLinkedList quickSorted = quickSort.sort();
-        System.out.println("Tiempo de ejecución: " + quickSort.getTime() + " ms");
+        System.out.println("Tiempo de ejecución QuickSort: " + quickSort.getTime() + " ms");
         System.out.println("Número de swaps: " + quickSort.numberOfSwaps);
         MergeSort mergeSort = new MergeSort(this);
         DoublyLinkedList mergeSorted = mergeSort.sort();
-        System.out.println("Tiempo de ejecución: " + mergeSort.getTime() + " ms");
+        System.out.println("Tiempo de ejecución MergeSort: " + mergeSort.getTime() + " ms");
+        BinaryInsertionSort binaryInsertionSort = new BinaryInsertionSort(this);
+        DoublyLinkedList binaryInsertionSorted = binaryInsertionSort.sort();
+        System.out.println("Tiempo de ejecución BinaryInsertionSort: " + binaryInsertionSort.getTime() + " ms");
 
     }
 
