@@ -1,0 +1,4 @@
+algorithm,time,comparisons,swaps
+Quick Sort,18,678158,26625
+Merge Sort,8,249123,45856
+Binary Insertion Sort,21305,0,0

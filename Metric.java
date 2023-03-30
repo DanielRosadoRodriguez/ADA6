@@ -1,10 +1,10 @@
-public class Metrics {
+public class Metric {
     private String algorithmName;
     private long time;
     private int comparisons;
     private int swaps;
 
-    public Metrics(String algorithmName, long time, int comparisons, int swaps) {
+    public Metric(String algorithmName, long time, int comparisons, int swaps) {
         this.algorithmName = algorithmName;
         this.time = time;
         this.comparisons = comparisons;

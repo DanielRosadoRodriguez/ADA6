@@ -3,9 +3,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class DAOMetrics {
-    private ArrayList<Metrics> metrics;
+    private ArrayList<Metric> metrics;
 
-    public DAOMetrics(ArrayList<Metrics> metrics) {
+    public DAOMetrics(ArrayList<Metric> metrics) {
         this.metrics = metrics;
     }
 
@@ -13,11 +13,11 @@ public class DAOMetrics {
         // Crear archivo CSV para escritura
         FileWriter csvWriter = new FileWriter("metrics.csv");
 
-        String[] headers = { "algorithm", "time", "comparisons", "swaps", "size" };
+        String[] headers = { "algorithm", "time", "comparisons", "swaps" };
 
         csvWriter.write(String.join(",", headers) + "\n");
 
-        for (Metrics metric : metrics) {
+        for (Metric metric : metrics) {
             csvWriter.write(metric.getAlgorithmName());
             csvWriter.append(",");
             csvWriter.write(Long.toString(metric.getTime()));
@@ -33,11 +33,11 @@ public class DAOMetrics {
 
     }
 
-    public ArrayList<Metrics> getMetrics() {
+    public ArrayList<Metric> getMetrics() {
         return metrics;
     }
 
-    public void setMetrics(ArrayList<Metrics> metrics) {
+    public void setMetrics(ArrayList<Metric> metrics) {
         this.metrics = metrics;
     }
 
