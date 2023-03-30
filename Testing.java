@@ -5,15 +5,7 @@ public class Testing {
         try {
             DoublyLinkedList list = dao.read();
             list.SetColumnToCompare("fixedAcidity");
-            // list.displayList();
-            // list.sort();
-            // list = dao.read();
-            // list.displayList();
-            list.binaryInsertionSort(list.getSize());
-            list.displayList();
-
-
-        
+            list.sort();
         } catch (Exception e) {
             e.printStackTrace();
         }  
