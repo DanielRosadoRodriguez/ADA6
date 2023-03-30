@@ -1,20 +1,11 @@
 public class BinaryInsertionSort extends Sort{
-
+    private int n;
     public BinaryInsertionSort(DoublyLinkedList list) {
         super(list);
+        n = list.getSize();
     }
 
-    public DoublyLinkedList sort(){
-        this.time = calcularTiempoDeEjecucion(() -> {
-            try {
-                binaryInsertionSort(list.getSize());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        return this.list;
-    }
-    public DoublyLinkedList sortDesc(){
+    public void sortDesc(){
         this.time = calcularTiempoDeEjecucion(() -> {
             try {
                 ////  binaryInsertionSortDesc(list.getSize());
@@ -22,7 +13,6 @@ public class BinaryInsertionSort extends Sort{
                 e.printStackTrace();
             }
         });
-        return this.list;
     }
 
     public int binarySearch(Wine item, int low, int high) {
@@ -38,8 +28,9 @@ public class BinaryInsertionSort extends Sort{
         return low;
     }
 
-    public void binaryInsertionSort(int n) throws Exception {
-        int i, loc = 0, j;
+    public void sortAsc() {
+        try {
+                   int i, loc = 0, j;
         Wine selected;
 
         for (i = 1; i < n; ++i) {
@@ -51,7 +42,12 @@ public class BinaryInsertionSort extends Sort{
                 j--;
             }
             list.updateNodeWithPosition(j + 1, selected);
+        } 
         }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
     
 

@@ -1,3 +1,6 @@
+import javax.lang.model.util.ElementScanner14;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 public abstract class Sort {
     protected DoublyLinkedList list;
     protected int numberOfSwaps = 0;
@@ -15,7 +18,21 @@ public abstract class Sort {
         numberOfSwaps++;
     }
 
-    public abstract DoublyLinkedList sort();
+    public DoublyLinkedList sort(int direction) {
+        if(direction == 1){
+            this.time = calcularTiempoDeEjecucion(() -> {
+                sortAsc();
+            });
+        }else{
+            this.time = calcularTiempoDeEjecucion(() -> {
+                sortDesc();
+            });
+        }
+        return this.list;
+    }
+
+    public abstract void sortAsc();
+    public abstract void sortDesc();
     
     public long calcularTiempoDeEjecucion(Runnable runnable) {
         long tiempoInicio = System.currentTimeMillis();
@@ -26,4 +43,12 @@ public abstract class Sort {
     public long getTime() {
         return time;
     }
+
+    public int getSwaps() {
+        return numberOfSwaps;
+    }
+    public int getComparisons() {
+        return numberOfComparisons;
+    }
+
 }

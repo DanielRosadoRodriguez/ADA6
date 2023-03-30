@@ -4,17 +4,11 @@ public class MergeSort extends Sort {
         super(list);
     }
 
-    public DoublyLinkedList sort() {
-        this.time = calcularTiempoDeEjecucion(() -> {
+    public void sortAsc() {
             mergeSort();
-        });
-        return this.list;
     }
-    public DoublyLinkedList sortDesc() {
-        this.time = calcularTiempoDeEjecucion(() -> {
-            mergeSortDesc();
-        });
-        return this.list;
+    public void sortDesc() {
+        mergeSortDesc();
     }
 
     public void mergeSort() {

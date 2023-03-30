@@ -4,18 +4,12 @@ public class QuickSort extends Sort {
         super(list);
     }
 
-    public DoublyLinkedList sort() {
-        this.time = calcularTiempoDeEjecucion(() -> {
-            quickSort();
-        });
-        return this.list;
+    public void sortAsc() {
+        quickSort();
     }
 
-    public DoublyLinkedList sortDesc() {
-        this.time = calcularTiempoDeEjecucion(() -> {
-            quickSortDesc();
-        });
-        return this.list;
+    public void sortDesc() {
+        quickSortDesc();
     }
 
     public void quickSort() {
@@ -70,4 +64,6 @@ public class QuickSort extends Sort {
         this.swap(i, right);
         return i;
     }
+
+
 }

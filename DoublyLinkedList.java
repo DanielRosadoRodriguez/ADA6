@@ -16,35 +16,25 @@ public class DoublyLinkedList {
     }
 
     public void sort(int order) {
-        if (order == 1) {
-            sortAsc();
-        } else if (order == 0) {
-            sortDesc();
-        }
-    }
-
-    public void sortAsc() {
         QuickSort quickSort = new QuickSort(this);
-        this.quickSorted = quickSort.sort();
+        this.quickSorted = quickSort.sort(order);
+        Metrics metrics = new Metrics("quicksort", quickSort.getTime(), quickSort.getComparisons(),
+                quickSort.getSwaps());
 
         MergeSort mergeSort = new MergeSort(this);
-        this.mergeSorted = mergeSort.sort();
+        this.mergeSorted = mergeSort.sort(order);
 
         BinaryInsertionSort binaryInsertionSort = new BinaryInsertionSort(this);
-        this.binaryInsertionSorted = binaryInsertionSort.sort();
-        askToPrintCSV();
-    }
-
-    public void sortDesc(){
-        QuickSort quickSort = new QuickSort(this);
-        this.quickSorted = quickSort.sortDesc();
-
-        MergeSort mergeSort = new MergeSort(this);
-        this.mergeSorted = mergeSort.sortDesc();
-
+        this.binaryInsertionSorted = binaryInsertionSort.sort(order);
 
         askToPrintCSV();
+        printMetrics();
     }
+    public void printMetrics(){
+ 
+    }
+
+
 
 
     public void askToPrintCSV(){
