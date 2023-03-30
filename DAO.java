@@ -44,7 +44,7 @@ public class DAO {
 
     public void writeCSV(DoublyLinkedList list, String fileName) throws IOException {
         // Crear archivo CSV para escritura
-        FileWriter csvWriter = new FileWriter(fileName);
+        FileWriter csvWriter = new FileWriter("sorted/"+fileName);
 
         // Escribir encabezado de columnas
 

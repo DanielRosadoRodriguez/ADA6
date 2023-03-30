@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class DoublyLinkedList {
 
     private DoublyLink first;
@@ -15,7 +17,7 @@ public class DoublyLinkedList {
         DoublyLinkedList quickSorted = quickSort.sort();
         System.out.println("Tiempo de ejecución QuickSort: " + quickSort.getTime() + " ms");
         System.out.println("Número de swaps: " + quickSort.numberOfSwaps);
-        
+
         MergeSort mergeSort = new MergeSort(this);
         DoublyLinkedList mergeSorted = mergeSort.sort();
         System.out.println("Tiempo de ejecución MergeSort: " + mergeSort.getTime() + " ms");
@@ -25,6 +27,20 @@ public class DoublyLinkedList {
         DoublyLinkedList binaryInsertionSorted = binaryInsertionSort.sort();
         System.out.println("Tiempo de ejecución BinaryInsertionSort: " + binaryInsertionSort.getTime() + " ms");
         System.out.println("Número de swaps: " + binaryInsertionSort.numberOfSwaps);
+
+        printCsv(quickSorted, "quickSorted.csv");
+        printCsv(mergeSorted, "mergeSorted.csv");
+        printCsv(binaryInsertionSorted, "binaryInsertionSorted.csv");
+    }
+
+    
+    public void printCsv(DoublyLinkedList list, String filename) {
+        DAO dao = new DAO();
+        try {
+            dao.writeCSV(list, filename);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void add(Wine wine) {
@@ -63,6 +79,7 @@ public class DoublyLinkedList {
         }
         System.out.println("last");
     }
+
     public void displayList(DoublyLinkedList list) {
         DoublyLink current = list.first;
         if (isEmpty()) {
@@ -75,6 +92,7 @@ public class DoublyLinkedList {
         }
         System.out.println("last");
     }
+
     public boolean isEmpty() {
         return first == null;
     }
