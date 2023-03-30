@@ -14,9 +14,7 @@ public class MergeSort extends Sort {
     public void mergeSort() {
         if (this.list.getFirst() != null) {
             this.list.setFirst(mergeSortRecursive(this.list.getFirst()));
-
         }
-
     }
 
     private DoublyLink mergeSortRecursive(DoublyLink head) {
@@ -35,24 +33,30 @@ public class MergeSort extends Sort {
     }
 
     private DoublyLink merge(DoublyLink left, DoublyLink right) {
+        DoublyLink result = null;
+
         if (left == null) {
-            return right;
-        }
-        if (right == null) {
-            return left;
+            result = right;
+        } else if (right == null) {
+            result = left;
+        } else {
+            if ((float) left.getWine().getValueToCompare() < (float) right.getWine().getValueToCompare()) {
+                result = left;
+                result.setNext(merge(left.getNext(), right));
+            } else {
+                result = right;
+                result.setNext(merge(left, right.getNext()));
+            }
+
+            result.getNext().setPrevious(result);
+            result.setPrevious(null);
+
+            if (left != null && right != null) {
+                this.swap(left, right);
+            }
         }
 
-        if ((float) left.getWine().getValueToCompare() < (float) right.getWine().getValueToCompare()) {
-            left.setNext(merge(left.getNext(), right));
-            left.getNext().setPrevious(left);
-            left.setPrevious(null);
-            return left;
-        } else {
-            right.setNext(merge(left, right.getNext()));
-            right.getNext().setPrevious(right);
-            right.setPrevious(null);
-            return right;
-        }
+        return result;
     }
 
     private DoublyLink getMiddle(DoublyLink head) {
@@ -70,6 +74,7 @@ public class MergeSort extends Sort {
                 fast = fast.getNext();
             }
         }
+
         return slow;
     }
 }

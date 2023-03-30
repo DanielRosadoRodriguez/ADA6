@@ -6,11 +6,13 @@ public class QuickSort extends Sort {
 
     public DoublyLinkedList sort() {
         this.time = calcularTiempoDeEjecucion(() -> {
-            quickSortRecursive(this.list.getFirst(), this.list.getLast());
+            quickSort();
         });
         return this.list;
     }
-
+    public void quickSort() {
+        quickSortRecursive(this.list.getFirst(), this.list.getLast());
+    }
     private void quickSortRecursive(DoublyLink left, DoublyLink right) {
         if (left == null || right == null || left == right || left.getPrevious() == right) {
             return;
