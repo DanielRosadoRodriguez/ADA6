@@ -15,6 +15,7 @@ public class DoublyLinkedList {
         DoublyLinkedList quickSorted = quickSort.sort();
         System.out.println("Tiempo de ejecución QuickSort: " + quickSort.getTime() + " ms");
         System.out.println("Número de swaps: " + quickSort.numberOfSwaps);
+        
         MergeSort mergeSort = new MergeSort(this);
         DoublyLinkedList mergeSorted = mergeSort.sort();
         System.out.println("Tiempo de ejecución MergeSort: " + mergeSort.getTime() + " ms");
