@@ -1,6 +1,3 @@
-import javax.lang.model.util.ElementScanner14;
-import javax.xml.parsers.DocumentBuilderFactory;
-
 public abstract class Sort {
     protected DoublyLinkedList list;
     protected int numberOfSwaps = 0;
