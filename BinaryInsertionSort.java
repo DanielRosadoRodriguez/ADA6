@@ -14,6 +14,16 @@ public class BinaryInsertionSort extends Sort{
         });
         return this.list;
     }
+    public DoublyLinkedList sortDesc(){
+        this.time = calcularTiempoDeEjecucion(() -> {
+            try {
+                ////  binaryInsertionSortDesc(list.getSize());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        return this.list;
+    }
 
     public int binarySearch(Wine item, int low, int high) {
         while (low <= high) {
@@ -44,5 +54,7 @@ public class BinaryInsertionSort extends Sort{
         }
     }
     
+
+
 
 }

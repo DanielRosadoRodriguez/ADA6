@@ -5,6 +5,9 @@ public class DoublyLinkedList {
     private DoublyLink first;
     private DoublyLink last;
     private int size;
+    private DoublyLinkedList quickSorted;
+    private DoublyLinkedList mergeSorted;
+    private DoublyLinkedList binaryInsertionSorted;
 
     public DoublyLinkedList() {
         first = null;
@@ -12,28 +15,42 @@ public class DoublyLinkedList {
         size = 0;
     }
 
-    public void sort() {
-        QuickSort quickSort = new QuickSort(this);
-        DoublyLinkedList quickSorted = quickSort.sort();
-        System.out.println("Tiempo de ejecución QuickSort: " + quickSort.getTime() + " ms");
-        System.out.println("Número de swaps: " + quickSort.numberOfSwaps);
-
-        MergeSort mergeSort = new MergeSort(this);
-        DoublyLinkedList mergeSorted = mergeSort.sort();
-        System.out.println("Tiempo de ejecución MergeSort: " + mergeSort.getTime() + " ms");
-        System.out.println("Número de swaps: " + mergeSort.numberOfSwaps);
-
-        BinaryInsertionSort binaryInsertionSort = new BinaryInsertionSort(this);
-        DoublyLinkedList binaryInsertionSorted = binaryInsertionSort.sort();
-        System.out.println("Tiempo de ejecución BinaryInsertionSort: " + binaryInsertionSort.getTime() + " ms");
-        System.out.println("Número de swaps: " + binaryInsertionSort.numberOfSwaps);
-
-        printCsv(quickSorted, "quickSorted.csv");
-        printCsv(mergeSorted, "mergeSorted.csv");
-        printCsv(binaryInsertionSorted, "binaryInsertionSorted.csv");
+    public void sort(int order) {
+        if (order == 1) {
+            sortAsc();
+        } else if (order == 0) {
+            sortDesc();
+        }
     }
 
-    
+    public void sortAsc() {
+        QuickSort quickSort = new QuickSort(this);
+        this.quickSorted = quickSort.sort();
+
+        MergeSort mergeSort = new MergeSort(this);
+        this.mergeSorted = mergeSort.sort();
+
+        BinaryInsertionSort binaryInsertionSort = new BinaryInsertionSort(this);
+        this.binaryInsertionSorted = binaryInsertionSort.sort();
+        askToPrintCSV();
+    }
+
+    public void sortDesc(){
+        QuickSort quickSort = new QuickSort(this);
+        this.quickSorted = quickSort.sortDesc();
+
+        MergeSort mergeSort = new MergeSort(this);
+        this.mergeSorted = mergeSort.sortDesc();
+
+
+        askToPrintCSV();
+    }
+
+
+    public void askToPrintCSV(){
+        printCsv(this.quickSorted, "quickSorted.csv");
+        printCsv(this.mergeSorted, "mergeSorted.csv");
+    }
     public void printCsv(DoublyLinkedList list, String filename) {
         DAO dao = new DAO();
         try {
