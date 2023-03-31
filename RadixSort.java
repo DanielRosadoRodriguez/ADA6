@@ -162,7 +162,6 @@ public class RadixSort extends Sort {
     @Override
     public void sortDesc() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sortDesc'");
     }
 
 }

@@ -9,12 +9,38 @@ public class BinaryInsertionSort extends Sort {
     public int binarySearch(Wine item, int low, int high) {
         while (low <= high) {
             int mid = low + (high - low) / 2;
-            if ((Float) item.getValueToCompare() == (Float) list.get(mid).getValueToCompare())
+            if ((Float) item.getValueToCompare() == (Float) list.get(mid).getValueToCompare()){
+                this.numberOfComparisons++;
                 return mid + 1;
-            else if ((Float) item.getValueToCompare() > (Float) list.get(mid).getValueToCompare())
+            }
+            else if ((Float) item.getValueToCompare() > (Float) list.get(mid).getValueToCompare()){
+                this.numberOfComparisons += 2;
                 low = mid + 1;
-            else
+            }
+            else{
+                this.numberOfComparisons += 2;
                 high = mid - 1;
+            }
+                
+        }
+        return low;
+    }
+
+    public int binarySearchDesc(Wine item, int low, int high) {
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if ((Float) item.getValueToCompare() == (Float) list.get(mid).getValueToCompare()){
+                this.numberOfComparisons++;
+                return mid + 1;
+            }
+            else if ((Float) item.getValueToCompare() < (Float) list.get(mid).getValueToCompare()){ // cambiar el orden de comparación
+                this.numberOfComparisons += 2;
+                low = mid + 1;
+            }
+            else{
+                this.numberOfComparisons += 2;
+                high = mid - 1;
+            }
         }
         return low;
     }
@@ -50,7 +76,7 @@ public class BinaryInsertionSort extends Sort {
             for (i = 1; i < n; ++i) {
                 j = i - 1;
                 selected = list.get(i);
-                loc = binarySearch(selected, 0, j);
+                loc = binarySearchDesc(selected, 0, j);
                 while (j >= loc) {
                     list.updateNodeWithPosition(j + 1, list.get(j));
                     j--;

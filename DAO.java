@@ -11,7 +11,7 @@ public class DAO {
         DoublyLinkedList list = new DoublyLinkedList();
         try {
 
-            BufferedReader br = new BufferedReader(new FileReader("dataset\\Wine_Quality_Data.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("dataset\\Wine_Quality_Data_1000.csv"));
             String line;
             line = br.readLine(); // Reads the first line (headers row)
             String[] datos = line.split(",");
