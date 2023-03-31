@@ -1,18 +1,44 @@
+/**
+ * 
+ * Clase MergeSort que extiende de la clase abstracta Sort.
+ * 
+ * Ordena una lista en orden ascendente o descendente usando el algoritmo Merge
+ * Sort.
+ */
 public class MergeSort extends Sort {
 
+    /**
+     * 
+     * Constructor de la clase MergeSort.
+     * 
+     * @param list Lista a ordenar.
+     */
     public MergeSort(DoublyLinkedList list) {
         super(list);
     }
 
+    /**
+     * 
+     * Ordena la lista en orden ascendente.
+     */
     public void sortAsc() {
         mergeSort();
     }
 
+    /**
+     * 
+     * Ordena la lista en orden descendente.
+     */
     public void sortDesc() {
         mergeSortDesc();
     }
 
-    public void mergeSort() {
+    /**
+     * 
+     * Método privado que ordena la lista en orden ascendente usando el algoritmo
+     * Merge Sort.
+     */
+    private void mergeSort() {
         if (this.list.getFirst() != null) {
             this.list.setFirst(mergeSortRecursive(this.list.getFirst()));
         }
@@ -48,7 +74,6 @@ public class MergeSort extends Sort {
 
         if ((float) left.getWine().getValueToCompare() < (float) right.getWine().getValueToCompare()) {
             this.numberOfComparisons++;
-            numberOfSwaps++;
             left.setNext(merge(left.getNext(), right));
             left.getNext().setPrevious(left);
             left.setPrevious(null);
@@ -85,6 +110,15 @@ public class MergeSort extends Sort {
         return next;
     }
 
+    /**
+     * Ordena la lista doblemente enlazada actual en orden descendente utilizando el
+     * algoritmo Merge Sort.
+     * Si la lista está vacía, no hace nada.
+     * El número de comparaciones realizadas durante la ordenación se almacena en la
+     * variable numberOfComparisons.
+     * Si durante la ordenación se realizan intercambios de elementos, se incrementa
+     * la variable numberOfSwaps.
+     */
     public void mergeSortDesc() {
         if (this.list.getFirst() != null) {
             this.list.setFirst(mergeSortRecursiveDesc(this.list.getFirst()));
@@ -92,6 +126,14 @@ public class MergeSort extends Sort {
         this.numberOfComparisons++;
     }
 
+    /**
+     * Función auxiliar que realiza la ordenación recursiva de la lista doblemente
+     * enlazada actual en orden descendente
+     * utilizando el algoritmo Merge Sort. Devuelve la cabeza de la lista ordenada.
+     * 
+     * @param head la cabeza de la lista a ordenar
+     * @return la cabeza de la lista ordenada
+     */
     private DoublyLink mergeSortRecursiveDesc(DoublyLink head) {
         if (head == null || head.getNext() == null) {
             this.numberOfComparisons++;
@@ -107,6 +149,16 @@ public class MergeSort extends Sort {
         return mergeDesc(left, right);
     }
 
+    /**
+     * Función auxiliar que fusiona dos listas doblemente enlazadas ordenadas en
+     * orden descendente en una sola lista
+     * doblemente enlazada ordenada en orden descendente. Devuelve la cabeza de la
+     * lista fusionada.
+     * 
+     * @param left  la cabeza de la lista doblemente enlazada izquierda a fusionar
+     * @param right la cabeza de la lista doblemente enlazada derecha a fusionar
+     * @return la cabeza de la lista fusionada
+     */
     private DoublyLink mergeDesc(DoublyLink left, DoublyLink right) {
         if (left == null) {
             return right;
