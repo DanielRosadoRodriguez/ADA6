@@ -29,6 +29,7 @@ public class RadixSort extends Sort {
         Float mx = (Float) current.getWine().getValueToCompare();
 
         while (current != null) {
+            this.numberOfComparisons++;
             if ((Float) current.getWine().getValueToCompare() > mx) {
                 mx = (Float) current.getWine().getValueToCompare();
             }
@@ -73,7 +74,6 @@ public class RadixSort extends Sort {
         while (current != null) {
             int index = (int) (((Float) current.getWine().getValueToCompare() / exp) % 10);
             int position = count[index];
-            this.numberOfSwaps++;
             output[position - 1] = current.getWine();
             count[index]--;
             current = current.getPrevious();

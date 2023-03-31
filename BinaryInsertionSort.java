@@ -58,9 +58,7 @@ public class BinaryInsertionSort extends Sort {
             if ((Float) item.getValueToCompare() == (Float) list.get(mid).getValueToCompare()) {
                 this.numberOfComparisons++;
                 return mid + 1;
-            } else if ((Float) item.getValueToCompare() < (Float) list.get(mid).getValueToCompare()) { // cambiar el
-                                                                                                       // orden de
-                                                                                                       // comparación
+            } else if ((Float) item.getValueToCompare() < (Float) list.get(mid).getValueToCompare()) { 
                 this.numberOfComparisons += 2;
                 low = mid + 1;
             } else {
@@ -113,9 +111,11 @@ public class BinaryInsertionSort extends Sort {
                 loc = binarySearchDesc(selected, 0, j);
                 while (j >= loc) {
                     list.updateNodeWithPosition(j + 1, list.get(j));
+                    this.numberOfSwaps++;
                     j--;
                 }
                 list.updateNodeWithPosition(j + 1, selected);
+                this.numberOfSwaps++;
             }
         } catch (Exception e) {
             e.printStackTrace();
