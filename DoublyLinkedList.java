@@ -8,6 +8,8 @@ public class DoublyLinkedList {
     private int size;
     private DoublyLinkedList quickSorted;
     private DoublyLinkedList mergeSorted;
+    private DoublyLinkedList binaryInsertionSorted;
+    private DoublyLinkedList radixSorted;
 
     public DoublyLinkedList() {
         first = null;
@@ -25,6 +27,11 @@ public class DoublyLinkedList {
         this.mergeSorted = mergeSort.sort(order);
         Metric m2 = new Metric("Merge Sort", mergeSort.getTime(), mergeSort.getComparisons(),
                 mergeSort.getSwaps());
+
+        RadixSort radixSort = new RadixSort(buildList(col));
+        this.radixSorted = radixSort.sort(order);
+        Metric m3 = new Metric("Radix Sort", radixSort.getTime(), radixSort.getComparisons(),
+                radixSort.getSwaps());
 
         askToPrintCSV();
         printMetrics(m1, m2);
