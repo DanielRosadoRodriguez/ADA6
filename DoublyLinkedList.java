@@ -34,6 +34,7 @@ public class DoublyLinkedList {
                 radixSort.getSwaps());
 
         askToPrintCSV();
+        printMetrics(m1, m2);
 
     }
 
