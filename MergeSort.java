@@ -9,6 +9,7 @@ public class MergeSort extends Sort {
     }
 
     public void sortDesc() {
+        mergeSortDesc();
     }
 
 
@@ -71,5 +72,46 @@ public class MergeSort extends Sort {
         }
         return slow;
     }
-
+    public void mergeSortDesc() {
+        if (this.list.getFirst() != null) {
+            this.list.setFirst(mergeSortRecursiveDesc(this.list.getFirst()));
+        }
+    }
+    
+    private DoublyLink mergeSortRecursiveDesc(DoublyLink head) {
+        if (head == null || head.getNext() == null) {
+            return head;
+        }
+    
+        DoublyLink middle = getMiddle(head);
+        DoublyLink nextToMiddle = middle.getNext();
+        middle.setNext(null);
+    
+        DoublyLink left = mergeSortRecursiveDesc(head);
+        DoublyLink right = mergeSortRecursiveDesc(nextToMiddle);
+    
+        return mergeDesc(left, right);
+    }
+    
+    private DoublyLink mergeDesc(DoublyLink left, DoublyLink right) {
+        if (left == null) {
+            return right;
+        }
+        if (right == null) {
+            return left;
+        }
+    
+        if ((float) left.getWine().getValueToCompare() >= (float) right.getWine().getValueToCompare()) {
+            left.setNext(mergeDesc(left.getNext(), right));
+            left.getNext().setPrevious(left);
+            left.setPrevious(null);
+            return left;
+        } else {
+            right.setNext(mergeDesc(left, right.getNext()));
+            right.getNext().setPrevious(right);
+            right.setPrevious(null);
+            return right;
+        }
+    }
+    
 }
