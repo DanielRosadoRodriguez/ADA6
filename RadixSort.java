@@ -1,12 +1,22 @@
 import java.util.Arrays;
 
+/**
+ * Clase que implementa el algoritmo de ordenamiento Radix Sort.
+ */
 public class RadixSort extends Sort {
-    
+    /**
+     * @param list la DoublyLinkedList a ordenar
+     */
     public RadixSort(DoublyLinkedList list) {
         super(list);
     }
 
-    // A utility function to get maximum value in arr[]
+    /**
+     * 
+     * Obtiene el valor máximo de la lista de vinos a ordenar usando Radix Sort.
+     * 
+     * @return el valor máximo de la lista de vinos
+     */
     private Float getMax() {
         DoublyLink current = list.getFirst();
         Float mx = (Float) current.getWine().getValueToCompare();
@@ -75,20 +85,20 @@ public class RadixSort extends Sort {
         if (list.getFirst() == null) {
             return;
         }
-        
+
         DoublyLink current = list.getFirst();
         DoublyLink temp = null;
-        
+
         while (current != null) {
             temp = current.getPrevious();
             current.setPrevious(current.getNext());
-            current.setNext(temp); 
+            current.setNext(temp);
             current = current.getPrevious();
         }
-        
+
         temp = list.getFirst();
-        list.setFirst(list.getLast()); 
-        list.setLast(temp); 
+        list.setFirst(list.getLast());
+        list.setLast(temp);
     }
 
     // The main function to that sorts list of size n using Radix Sort
@@ -96,7 +106,7 @@ public class RadixSort extends Sort {
         // Find the maximum number to know number of digits
         multiplicar();
         float max = getMax();
-        
+
         // Do counting sort for every digit. Note that
         // instead of passing digit number, exp is passed.
         // exp is 10^i where i is current digit number
@@ -106,22 +116,21 @@ public class RadixSort extends Sort {
         dividir();
     }
 
-    public void multiplicar(){
+    public void multiplicar() {
         DoublyLink current = list.getFirst();
-        while(current != null){
-            current.getWine().modifyValueToCompare((Float)current.getWine().getValueToCompare() * 1000);
+        while (current != null) {
+            current.getWine().modifyValueToCompare((Float) current.getWine().getValueToCompare() * 1000);
             current = current.getNext();
         }
-    } 
+    }
 
-    public void dividir(){
+    public void dividir() {
         DoublyLink current = list.getFirst();
-        while(current != null){
-            current.getWine().modifyValueToCompare((Float)current.getWine().getValueToCompare() / 1000);
+        while (current != null) {
+            current.getWine().modifyValueToCompare((Float) current.getWine().getValueToCompare() / 1000);
             current = current.getNext();
         }
-    } 
-
+    }
 
     @Override
     public void sortAsc() {

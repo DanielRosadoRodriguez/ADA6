@@ -3,6 +3,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Clase que se encarga de leer y escribir el CSV de vinos.
+ */
 public class DAO {
 
     /**

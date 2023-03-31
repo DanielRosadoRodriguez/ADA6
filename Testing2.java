@@ -1,4 +1,18 @@
+/**
+ * Clase principal, inicializa el programa y el menú de opciones
+ */
 public class Testing2 {
+    /**
+     * 
+     * Método principal de la clase Testing2 que crea instancias de Menu y DAO para
+     * leer una lista de vinos
+     * desde un archivo csv y utiliza la función sort() de DoublyLinkedList
+     * para ordenarla según la columna seleccionada y la dirección de ordenación
+     * especificada por el usuario.
+     * 
+     * @param args los argumentos de la línea de comandos los cuales no se utilizan
+     */
+
     public static void main(String[] args) {
         Menu menu = new Menu();
         DAO dao = new DAO();
@@ -11,9 +25,9 @@ public class Testing2 {
             e.printStackTrace();
         }
 
-            String col = menu.pickColumn();
-            int dir = menu.pickDirection();
-            list.sort(col, dir);
+        String col = menu.pickColumn();
+        int dir = menu.pickDirection();
+        list.sort(col, dir);
 
     }
 }

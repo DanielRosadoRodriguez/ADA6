@@ -116,7 +116,7 @@ public class Wine {
     /**
      * Método para obtener el valor a utilizar para la comparación en los algoritmos
      * de ordenamiento.
-     * 
+     * @return El valor a utilizar para la comparación en los algoritmos de ordenamiento.
      */
     public Object getValueToCompare() {
         return this.valueToCompare;
@@ -126,7 +126,7 @@ public class Wine {
      * Método para establecer el valor a utilizar para la comparación en los
      * algoritmos de ordenamiento.
      * 
-     * @param columnToCompare
+     * @param columnToCompare El nombre de la columna a utilizar para el ordenamiento
      */
     public void setValueToCompare(String columnToCompare) {
         switch (columnToCompare) {
@@ -412,7 +412,7 @@ public class Wine {
     /**
      * Método para obtener el tipo de vino.
      * 
-     * @return El tipo de vino.
+     * @param newValue el valor que se usa para ordenar la lista
      */
     public void modifyValueToCompare(Float newValue) {
         this.valueToCompare = newValue;

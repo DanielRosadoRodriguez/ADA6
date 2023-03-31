@@ -213,7 +213,7 @@ public class DoublyLinkedList {
     /**
      * Este método indica si la lista está vacía
      * 
-     * @return
+     * @return true si la lista está vacía, false en caso contrario.
      */
     public boolean isEmpty() {
         return first == null;
