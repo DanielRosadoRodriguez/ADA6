@@ -4,7 +4,7 @@ public class Testing {
         DAO dao = new DAO();
         try {
             DoublyLinkedList list = dao.read();
-            list.sort("fixedAcidity", 2);
+            list.sort("fixedAcidity", 1);
         } catch (Exception e) {
             e.printStackTrace();
         }  
