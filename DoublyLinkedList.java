@@ -32,7 +32,7 @@ public class DoublyLinkedList {
      * 
      * @param col   el nombre de la columna por la cual se ordenará la lista.
      * 
-     * @param order el orden de clasificación (1 para ascendente, -1 para
+     * @param order el orden de clasificación (1 para ascendente, 2 para
      *              descendente).
      */
     public void sort(String col, int order) {
