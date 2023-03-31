@@ -8,7 +8,6 @@ public class DoublyLinkedList {
     private int size;
     private DoublyLinkedList quickSorted;
     private DoublyLinkedList mergeSorted;
-    private DoublyLinkedList binaryInsertionSorted;
 
     public DoublyLinkedList() {
         first = null;
