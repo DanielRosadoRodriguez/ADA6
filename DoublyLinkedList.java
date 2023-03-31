@@ -28,13 +28,17 @@ public class DoublyLinkedList {
         Metric m2 = new Metric("Merge Sort", mergeSort.getTime(), mergeSort.getComparisons(),
                 mergeSort.getSwaps());
 
+        BinaryInsertionSort binaryInsertionSort = new BinaryInsertionSort(buildList(col));
+        this.binaryInsertionSorted = binaryInsertionSort.sort(order);
+        Metric m3 = new Metric("Binary Insertion Sort", binaryInsertionSort.getTime(),
+                binaryInsertionSort.getComparisons(), binaryInsertionSort.getSwaps());
         RadixSort radixSort = new RadixSort(buildList(col));
         this.radixSorted = radixSort.sort(order);
-        Metric m3 = new Metric("Radix Sort", radixSort.getTime(), radixSort.getComparisons(),
+        Metric m4 = new Metric("Radix Sort", radixSort.getTime(), radixSort.getComparisons(),
                 radixSort.getSwaps());
 
         askToPrintCSV();
-        printMetrics(m1, m2);
+        printMetrics(m1, m2, m3, m4);
 
     }
 
@@ -50,10 +54,12 @@ public class DoublyLinkedList {
         return list;
     }
 
-    public void printMetrics(Metric m1, Metric m2) {
+    public void printMetrics(Metric m1, Metric m2, Metric m3, Metric m4) {
         ArrayList<Metric> metrics = new ArrayList<>();
         metrics.add(m1);
         metrics.add(m2);
+        metrics.add(m3);
+        metrics.add(m4);
         DAOMetrics daoMetrics = new DAOMetrics(metrics);
         try {
             daoMetrics.writeCSV();
@@ -66,6 +72,7 @@ public class DoublyLinkedList {
     public void askToPrintCSV() {
         printCsv(this.quickSorted, "quickSorted.csv");
         printCsv(this.mergeSorted, "mergeSorted.csv");
+        printCsv(binaryInsertionSorted, "binaryInsertionSorted.csv");
         printCsv(this.radixSorted, "radixSorted.csv");
     }
 
