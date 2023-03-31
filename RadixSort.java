@@ -52,6 +52,7 @@ public class RadixSort extends Sort {
         while (current != null) {
             int index = (int) (((Float) current.getWine().getValueToCompare() / exp) % 10);
             int position = count[index];
+            this.numberOfSwaps++;
             output[position - 1] = current.getWine();
             count[index]--;
             current = current.getPrevious();
@@ -70,53 +71,25 @@ public class RadixSort extends Sort {
         }
     }
 
-
-    public void countSortDesc(int exp) throws Exception {
-        Wine[] output = new Wine[list.getSize()]; // output list
-        int i;
-        int[] count = new int[10];
-        Arrays.fill(count, 0);
-    
-        // Store count of occurrences in count[]
-        DoublyLink current = list.getFirst();
-        while (current != null) {
-            while (current != null) {
-                if (current.getWine() == null) {
-                    throw new Exception("Void Wine");
-                }
-                count[(int) (((Float) current.getWine().getValueToCompare() / exp) % 10)]++;
-                current = current.getNext();
-            }
+    public void reverseList() {
+        if (list.getFirst() == null) {
+            return;
         }
-    
-        // Change count[i] so that count[i] now contains
-        // actual position of this digit in output[]
-        for (i = 1; i < 10; i++)
-            count[i] += count[i - 1];
-    
-        // Build the output array
-        current = list.getLast();
+        
+        DoublyLink current = list.getFirst();
+        DoublyLink temp = null;
+        
         while (current != null) {
-            int index = (int) (((Float) current.getWine().getValueToCompare() / exp) % 10);
-            int position = count[index];
-            output[position - 1] = current.getWine();
-            count[index]--;
+            temp = current.getPrevious();
+            current.setPrevious(current.getNext());
+            current.setNext(temp); 
             current = current.getPrevious();
         }
-    
-        // Copy the output list to current list, so that the list now
-        // contains sorted elements according to current digit
-        current = list.getFirst();
-        i = 0;
-        while (current != null) {
-            current.setWine(output[i]);
-            current = current.getNext();
-            i++;
-        }
+        
+        temp = list.getFirst();
+        list.setFirst(list.getLast()); 
+        list.setLast(temp); 
     }
-    
-    // The main function to that sorts list of size n using Radix Sort
-   
 
     // The main function to that sorts list of size n using Radix Sort
     public void sortRadix() throws Exception {
@@ -161,7 +134,12 @@ public class RadixSort extends Sort {
 
     @Override
     public void sortDesc() {
-        System.out.println("Unable to sort in descending order with radix");
+        try {
+            sortRadix();
+            reverseList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
