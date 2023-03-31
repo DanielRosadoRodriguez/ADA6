@@ -163,6 +163,9 @@ public class Wine {
     public void setColor(String color) {
         this.color = color;
     }
+    public void modifyValueToCompare(Float newValue){
+        this.valueToCompare = newValue;
+    }
     
   
 }
