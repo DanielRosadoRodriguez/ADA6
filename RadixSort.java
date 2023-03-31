@@ -1,12 +1,29 @@
 import java.util.Arrays;
 
+/**
+ * Clase que implementa el algoritmo de ordenamiento RadixSort. Extiende la
+ * clase Sort.
+ */
+
 public class RadixSort extends Sort {
-    
+
+    /**
+     * 
+     * Constructor de la clase RadixSort. Recibe como parámetro una lista doblemente
+     * enlazada.
+     * 
+     * @param list La lista doblemente enlazada que se va a ordenar.
+     */
     public RadixSort(DoublyLinkedList list) {
         super(list);
     }
 
-    // A utility function to get maximum value in arr[]
+    /**
+     * 
+     * Función privada que obtiene el valor máximo de la lista.
+     * 
+     * @return El valor máximo de la lista.
+     */
     private Float getMax() {
         DoublyLink current = list.getFirst();
         Float mx = (Float) current.getWine().getValueToCompare();
@@ -21,8 +38,15 @@ public class RadixSort extends Sort {
         return mx;
     }
 
-    // A function to do counting sort of arr[] according to
-    // the digit represented by exp.
+    /**
+     * 
+     * Función que realiza el counting sort de la lista de acuerdo al dígito
+     * representado por exp.
+     * 
+     * @param exp El dígito que se va a utilizar para realizar el counting sort.
+     * 
+     * @throws Exception Si se intenta ordenar una lista vacía o nula.
+     */
     public void countSort(int exp) throws Exception {
         Wine[] output = new Wine[list.getSize()]; // output list
         int i;
@@ -42,12 +66,9 @@ public class RadixSort extends Sort {
             }
         }
 
-        // Change count[i] so that count[i] now contains
-        // actual position of this digit in output[]
         for (i = 1; i < 10; i++)
             count[i] += count[i - 1];
 
-        // Build the output array
         current = list.getLast();
         while (current != null) {
             int index = (int) (((Float) current.getWine().getValueToCompare() / exp) % 10);
@@ -58,45 +79,52 @@ public class RadixSort extends Sort {
             current = current.getPrevious();
         }
 
-        // Copy the output list to current list, so that the list now
-        // contains sorted elements according to current digit
         current = list.getFirst();
         i = 0;
         while (current != null) {
             current.setWine(output[i]);
-            // System.out.println("Current get wine: " + current.getWine());
-            // System.out.println("Output[i]: " + output[i]);
             current = current.getNext();
             i++;
         }
     }
 
+    /**
+     * 
+     * Función ultra especial para ordenar la lista de manera descendente
+     */
     public void reverseList() {
         if (list.getFirst() == null) {
             return;
         }
-        
+
         DoublyLink current = list.getFirst();
         DoublyLink temp = null;
-        
+
         while (current != null) {
             temp = current.getPrevious();
             current.setPrevious(current.getNext());
-            current.setNext(temp); 
+            current.setNext(temp);
             current = current.getPrevious();
         }
-        
+
         temp = list.getFirst();
-        list.setFirst(list.getLast()); 
-        list.setLast(temp); 
+        list.setFirst(list.getLast());
+        list.setLast(temp);
     }
 
-    // The main function to that sorts list of size n using Radix Sort
+    /**
+     * Funcion principal que ordena la lista usando Radix, primero para poder
+     * ordenar decimales
+     * debe multiplicar cada elemento * 1000 para evitar errores
+     * una vez ordenada la lista, regresa los números a su estado original
+     * 
+     * @throws Exception
+     */
     public void sortRadix() throws Exception {
         // Find the maximum number to know number of digits
         multiplicar();
         float max = getMax();
-        
+
         // Do counting sort for every digit. Note that
         // instead of passing digit number, exp is passed.
         // exp is 10^i where i is current digit number
@@ -106,23 +134,34 @@ public class RadixSort extends Sort {
         dividir();
     }
 
-    public void multiplicar(){
+    /**
+     * 
+     * Multiplica el valor a comparar de cada vino por 1000.
+     */
+    public void multiplicar() {
         DoublyLink current = list.getFirst();
-        while(current != null){
-            current.getWine().modifyValueToCompare((Float)current.getWine().getValueToCompare() * 1000);
+        while (current != null) {
+            current.getWine().modifyValueToCompare((Float) current.getWine().getValueToCompare() * 1000);
             current = current.getNext();
         }
-    } 
+    }
 
-    public void dividir(){
+    /**
+     * 
+     * Divide el valor a comparar de cada vino por 1000.
+     */
+    public void dividir() {
         DoublyLink current = list.getFirst();
-        while(current != null){
-            current.getWine().modifyValueToCompare((Float)current.getWine().getValueToCompare() / 1000);
+        while (current != null) {
+            current.getWine().modifyValueToCompare((Float) current.getWine().getValueToCompare() / 1000);
             current = current.getNext();
         }
-    } 
+    }
 
-
+    /**
+     * 
+     * Manda a ordenar la lista de vinos de forma ascendente utilizando Radix Sort.
+     */
     @Override
     public void sortAsc() {
         try {
@@ -132,6 +171,10 @@ public class RadixSort extends Sort {
         }
     }
 
+    /**
+     * 
+     * Manda a ordenar la lista de vinos de forma descendente utilizando Radix Sort.
+     */
     @Override
     public void sortDesc() {
         try {
