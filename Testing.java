@@ -5,7 +5,7 @@ public class Testing {
         try {
             DoublyLinkedList list = dao.read();
             list.SetColumnToCompare("fixedAcidity");
-            list.sort(1);
+            list.sort(2);
         } catch (Exception e) {
             e.printStackTrace();
         }  

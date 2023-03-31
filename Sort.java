@@ -21,6 +21,7 @@ public abstract class Sort {
                 sortAsc();
             });
         }else{
+            System.out.println("Sort Desc");
             this.time = calcularTiempoDeEjecucion(() -> {
                 sortDesc();
             });
