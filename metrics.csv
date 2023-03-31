@@ -1,5 +1,5 @@
 algorithm,time,comparisons,swaps
-Quick Sort,2,22919,4027
-Merge Sort,2,38084,4305
-Binary Insertion Sort,951,17184,243989
-Radix Sort,8,0,0
+Quick Sort,3,22919,4027
+Merge Sort,3,38084,4305
+Binary Insertion Sort,972,17184,243989
+Radix Sort,22,0,0
