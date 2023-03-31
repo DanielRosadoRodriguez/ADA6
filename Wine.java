@@ -35,7 +35,6 @@ public class Wine {
         this.quality = quality;
         this.color = color;
     }
-
     public Object getValueToCompare() {
         return this.valueToCompare;
     }

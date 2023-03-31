@@ -5,10 +5,10 @@ public class MergeSort extends Sort {
     }
 
     public void sortAsc() {
-            mergeSort();
+        mergeSort();
     }
+
     public void sortDesc() {
-        mergeSortDesc();
     }
 
     public void mergeSort() {
@@ -22,7 +22,7 @@ public class MergeSort extends Sort {
         if (head == null || head.getNext() == null) {
             return head;
         }
-                this.numberOfComparisons++;
+        this.numberOfComparisons++;
 
         DoublyLink middle = getMiddle(head);
         DoublyLink nextToMiddle = middle.getNext();
@@ -51,11 +51,11 @@ public class MergeSort extends Sort {
             } else {
                 result = right;
                 result.setNext(merge(left, right.getNext()));
-  
+
             }
-                this.numberOfComparisons++;
-                this.numberOfComparisons++;
-                this.numberOfComparisons++;
+            this.numberOfComparisons++;
+            this.numberOfComparisons++;
+            this.numberOfComparisons++;
 
             result.getNext().setPrevious(result);
             result.setPrevious(null);
@@ -73,7 +73,7 @@ public class MergeSort extends Sort {
         if (head == null) {
             return null;
         }
-            this.numberOfComparisons++;
+        this.numberOfComparisons++;
 
         DoublyLink slow = head;
         DoublyLink fast = head.getNext();
@@ -84,59 +84,10 @@ public class MergeSort extends Sort {
                 slow = slow.getNext();
                 fast = fast.getNext();
             }
-                this.numberOfComparisons++;
+            this.numberOfComparisons++;
         }
 
         return slow;
     }
-
-    public void mergeSortDesc() {
-        if (this.list.getFirst() != null) {
-            this.list.setFirst(mergeSortRecursiveDesc(this.list.getFirst()));
-        }
-    }
-    
-    private DoublyLink mergeSortRecursiveDesc(DoublyLink head) {
-        if (head == null || head.getNext() == null) {
-            return head;
-        }
-        DoublyLink middle = getMiddle(head);
-        DoublyLink nextToMiddle = middle.getNext();
-        middle.setNext(null);
-    
-        DoublyLink left = mergeSortRecursiveDesc(head);
-        DoublyLink right = mergeSortRecursiveDesc(nextToMiddle);
-    
-        return mergeDesc(left, right);
-    }
-    
-    private DoublyLink mergeDesc(DoublyLink left, DoublyLink right) {
-        DoublyLink result = null;
-    
-        if (left == null) {
-            result = right;
-        } else if (right == null) {
-            result = left;
-        } else {
-            if ((float) left.getWine().getValueToCompare() > (float) right.getWine().getValueToCompare()) {
-                result = left;
-                result.setNext(mergeDesc(left.getNext(), right));
-            } else {
-                result = right;
-                result.setNext(mergeDesc(left, right.getNext()));
-            }
-    
-            result.getNext().setPrevious(result);
-            result.setPrevious(null);
-    
-            if (left != null && right != null) {
-                this.swap(left, right);
-            }
-        }
-    
-        return result;
-    }
-    
-
 
 }

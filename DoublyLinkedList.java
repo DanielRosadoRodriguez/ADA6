@@ -16,18 +16,30 @@ public class DoublyLinkedList {
         size = 0;
     }
 
-    public void sort(int order) {
-        QuickSort quickSort = new QuickSort(this);
+    public void sort(String col, int order) {
+        QuickSort quickSort = new QuickSort(buildList(col));
         this.quickSorted = quickSort.sort(order);
         Metric m1 = new Metric("Quick Sort", quickSort.getTime(), quickSort.getComparisons(),
                 quickSort.getSwaps());
 
         askToPrintCSV();
+
     }
-    
+
+    public DoublyLinkedList buildList(String col) {
+        DoublyLinkedList list = new DoublyLinkedList();
+        DAO dao = new DAO();
+        try {
+            list = dao.read();
+            list.SetColumnToCompare(col);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     public void printMetrics(Metric m1, Metric m2) {
-        ArrayList <Metric> metrics = new ArrayList<>();
+        ArrayList<Metric> metrics = new ArrayList<>();
         metrics.add(m1);
         metrics.add(m2);
         DAOMetrics daoMetrics = new DAOMetrics(metrics);

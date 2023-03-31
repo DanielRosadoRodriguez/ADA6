@@ -13,8 +13,7 @@ public class Testing2 {
 
             String col = menu.pickColumn();
             int dir = menu.pickDirection();
-            list.SetColumnToCompare(col);
-            list.sort(dir);
+            list.sort(col, dir);
 
     }
 }

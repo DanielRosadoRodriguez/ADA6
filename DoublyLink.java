@@ -1,4 +1,4 @@
-public class DoublyLink{
+public class DoublyLink  {
     private Wine data;
     private DoublyLink next;
     private DoublyLink previous;
@@ -6,6 +6,7 @@ public class DoublyLink{
     public DoublyLink(Wine d) {
         this.data = d;
     }
+ 
 
     public Wine getWine(){
         return data;
