@@ -118,9 +118,9 @@ public class RadixSort extends Sort {
      * debe multiplicar cada elemento * 1000 para evitar errores
      * una vez ordenada la lista, regresa los números a su estado original
      * 
-     * @throws Exception
+     * @throws Exception si la lista esta vacia o nula
      */
-    public void sortRadix() throws Exception {
+    public void sortRadix() throws Exception{
         // Find the maximum number to know number of digits
         multiplicar();
         float max = getMax();

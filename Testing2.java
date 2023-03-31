@@ -10,7 +10,7 @@ public class Testing2 {
      * para ordenarla según la columna seleccionada y la dirección de ordenación
      * especificada por el usuario.
      * 
-     * @param args los argumentos de la línea de comandos los cuales no se utilizan
+     * @param args los argumentos de la línea de comandos los cuales no se utilizan en este método.
      */
 
     public static void main(String[] args) {
