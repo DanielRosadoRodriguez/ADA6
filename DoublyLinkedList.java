@@ -66,6 +66,7 @@ public class DoublyLinkedList {
     public void askToPrintCSV() {
         printCsv(this.quickSorted, "quickSorted.csv");
         printCsv(this.mergeSorted, "mergeSorted.csv");
+        printCsv(this.radixSorted, "radixSorted.csv");
     }
 
     public void printCsv(DoublyLinkedList list, String filename) {

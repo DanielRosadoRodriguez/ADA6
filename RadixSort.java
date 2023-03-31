@@ -31,14 +31,13 @@ public class RadixSort extends Sort {
 
         // Store count of occurrences in count[]
         DoublyLink current = list.getFirst();
-        int counter = 0;
+
         while (current != null) {
             while (current != null) {
                 if (current.getWine() == null) {
                     throw new Exception("Void Wine");
                 }
                 count[(int) (((Float) current.getWine().getValueToCompare() / exp) % 10)]++;
-                counter++;
                 current = current.getNext();
             }
         }
@@ -80,14 +79,12 @@ public class RadixSort extends Sort {
     
         // Store count of occurrences in count[]
         DoublyLink current = list.getFirst();
-        int counter = 0;
         while (current != null) {
             while (current != null) {
                 if (current.getWine() == null) {
                     throw new Exception("Void Wine");
                 }
                 count[(int) (((Float) current.getWine().getValueToCompare() / exp) % 10)]++;
-                counter++;
                 current = current.getNext();
             }
         }

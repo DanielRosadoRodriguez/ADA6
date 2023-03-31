@@ -1,3 +1,3 @@
 algorithm,time,comparisons,swaps
-Quick Sort,25,726756,41780
-Merge Sort,9,316569,73785
+Quick Sort,22,704784,26625
+Merge Sort,14,316693,73506
