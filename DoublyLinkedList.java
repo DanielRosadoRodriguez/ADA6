@@ -22,26 +22,14 @@ public class DoublyLinkedList {
         Metric m1 = new Metric("Quick Sort", quickSort.getTime(), quickSort.getComparisons(),
                 quickSort.getSwaps());
 
-        MergeSort mergeSort = new MergeSort(this);
-        this.mergeSorted = mergeSort.sort(order);
-        Metric m2 = new Metric("Merge Sort", mergeSort.getTime(), mergeSort.getComparisons(),
-                mergeSort.getSwaps());
-
-        BinaryInsertionSort binaryInsertionSort = new BinaryInsertionSort(this);
-        this.binaryInsertionSorted = binaryInsertionSort.sort(order);
-        Metric m3 = new Metric("Binary Insertion Sort", binaryInsertionSort.getTime(),
-                binaryInsertionSort.getComparisons(), binaryInsertionSort.getSwaps());
-
         askToPrintCSV();
-        printMetrics(m1, m2, m3);
     }
     
 
-    public void printMetrics(Metric m1, Metric m2, Metric m3) {
+    public void printMetrics(Metric m1, Metric m2) {
         ArrayList <Metric> metrics = new ArrayList<>();
         metrics.add(m1);
         metrics.add(m2);
-        metrics.add(m3);
         DAOMetrics daoMetrics = new DAOMetrics(metrics);
         try {
             daoMetrics.writeCSV();
@@ -53,7 +41,6 @@ public class DoublyLinkedList {
 
     public void askToPrintCSV() {
         printCsv(this.quickSorted, "quickSorted.csv");
-        printCsv(this.mergeSorted, "mergeSorted.csv");
     }
 
     public void printCsv(DoublyLinkedList list, String filename) {

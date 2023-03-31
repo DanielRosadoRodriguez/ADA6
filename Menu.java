@@ -111,36 +111,4 @@ public class Menu {
         }
     }
 
-
-    public boolean shouldContinue() {
-        int exit = 0;
-        boolean shouldContinue = true;
-        while (shouldContinue) {
-            showExitMenu();
-            exit = readExitMenu();
-            shouldContinue = exit == 0 ? true : false;
-        }
-        return exit == 2 ? false: true;
-    }
-    public void showExitMenu(){
-        System.out.println("Desea continuar?");
-        System.out.println("1. Si");
-        System.out.println("2. No");
-    }
-    public int readExitMenu(){
-        Scanner sc = new Scanner(System.in);
-        int exitSelected = sc.nextInt();
-        sc.close();
-        switch (exitSelected) {
-            case 1:
-                System.out.println("ha seleccionado continuar");
-                return 1;
-            case 2:
-                System.out.println("gracias por usar los metodos de ordenamiento");
-                return 2;
-            default:
-                System.out.println("Opción no válida");
-                return 0;
-        }
-    }
 }

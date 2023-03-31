@@ -94,33 +94,29 @@ public class MergeSort extends Sort {
         if (this.list.getFirst() != null) {
             this.list.setFirst(mergeSortRecursiveDesc(this.list.getFirst()));
         }
-            this.numberOfComparisons++;
     }
-    public DoublyLink mergeSortRecursiveDesc(DoublyLink head) {
+    
+    private DoublyLink mergeSortRecursiveDesc(DoublyLink head) {
         if (head == null || head.getNext() == null) {
             return head;
         }
-            this.numberOfComparisons++;
-
         DoublyLink middle = getMiddle(head);
         DoublyLink nextToMiddle = middle.getNext();
         middle.setNext(null);
-
+    
         DoublyLink left = mergeSortRecursiveDesc(head);
         DoublyLink right = mergeSortRecursiveDesc(nextToMiddle);
-
+    
         return mergeDesc(left, right);
     }
+    
     private DoublyLink mergeDesc(DoublyLink left, DoublyLink right) {
         DoublyLink result = null;
-
+    
         if (left == null) {
             result = right;
-            this.numberOfComparisons++;
         } else if (right == null) {
             result = left;
-            this.numberOfComparisons++;
-            this.numberOfComparisons++;
         } else {
             if ((float) left.getWine().getValueToCompare() > (float) right.getWine().getValueToCompare()) {
                 result = left;
@@ -129,20 +125,18 @@ public class MergeSort extends Sort {
                 result = right;
                 result.setNext(mergeDesc(left, right.getNext()));
             }
-            this.numberOfComparisons++;
-            this.numberOfComparisons++;
-            this.numberOfComparisons++;
-
+    
             result.getNext().setPrevious(result);
             result.setPrevious(null);
-
+    
             if (left != null && right != null) {
                 this.swap(left, right);
             }
-            this.numberOfComparisons++;
         }
-
+    
         return result;
     }
+    
+
 
 }
