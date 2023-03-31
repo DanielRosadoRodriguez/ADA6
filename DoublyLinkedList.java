@@ -22,6 +22,11 @@ public class DoublyLinkedList {
         Metric m1 = new Metric("Quick Sort", quickSort.getTime(), quickSort.getComparisons(),
                 quickSort.getSwaps());
 
+        MergeSort mergeSort = new MergeSort(buildList(col));
+        this.mergeSorted = mergeSort.sort(order);
+        Metric m2 = new Metric("Merge Sort", mergeSort.getTime(), mergeSort.getComparisons(),
+                mergeSort.getSwaps());
+
         askToPrintCSV();
 
     }
@@ -53,6 +58,7 @@ public class DoublyLinkedList {
 
     public void askToPrintCSV() {
         printCsv(this.quickSorted, "quickSorted.csv");
+        printCsv(this.mergeSorted, "mergeSorted.csv");
     }
 
     public void printCsv(DoublyLinkedList list, String filename) {
