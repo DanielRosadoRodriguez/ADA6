@@ -134,7 +134,11 @@ public class RadixSort extends Sort {
         dividir();
     }
 
-    public void multiplicar(){
+    /**
+     * 
+     * Multiplica el valor a comparar de cada vino por 1000.
+     */
+    public void multiplicar() {
         DoublyLink current = list.getFirst();
         while (current != null) {
             current.getWine().modifyValueToCompare((Float) current.getWine().getValueToCompare() * 1000);
@@ -142,7 +146,11 @@ public class RadixSort extends Sort {
         }
     }
 
-    public void dividir(){
+    /**
+     * 
+     * Divide el valor a comparar de cada vino por 1000.
+     */
+    public void dividir() {
         DoublyLink current = list.getFirst();
         while (current != null) {
             current.getWine().modifyValueToCompare((Float) current.getWine().getValueToCompare() / 1000);
