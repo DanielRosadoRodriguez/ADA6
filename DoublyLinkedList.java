@@ -28,6 +28,7 @@ public class DoublyLinkedList {
                 mergeSort.getSwaps());
 
         askToPrintCSV();
+        printMetrics(m1, m2);
 
     }
 

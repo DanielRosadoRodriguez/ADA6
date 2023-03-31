@@ -18,8 +18,10 @@ public class QuickSort extends Sort {
 
     private void quickSortRecursive(DoublyLink left, DoublyLink right) {
         if (left == null || right == null || left == right || left.getPrevious() == right) {
+            this.numberOfComparisons++;
             return;
         }
+        this.numberOfComparisons++;
 
         DoublyLink pivot = partition(left, right);
         quickSortRecursive(left, pivot.getPrevious());
@@ -32,10 +34,13 @@ public class QuickSort extends Sort {
         for (DoublyLink j = left; j != right; j = j.getNext()) {
             if ((float) j.getWine().getValueToCompare() < (float) pivot.getWine().getValueToCompare()) {
                 i = (i == null) ? left : i.getNext();
+                this.numberOfComparisons++;
                 this.swap(i, j);
             }
+            this.numberOfComparisons++;
         }
         i = (i == null) ? left : i.getNext();
+        this.numberOfComparisons++;
         this.swap(i, right);
         return i;
     }
@@ -47,8 +52,10 @@ public class QuickSort extends Sort {
 
     private void quickSortRecursiveDesc(DoublyLink left, DoublyLink right) {
         if (left == null || right == null || left == right || left.getPrevious() == right) {
+            this.numberOfComparisons++;
             return;
         }
+        this.numberOfComparisons++;
 
         DoublyLink pivot = partitionDesc(left, right);
         quickSortRecursiveDesc(left, pivot.getPrevious());
@@ -61,10 +68,13 @@ public class QuickSort extends Sort {
         for (DoublyLink j = left; j != right; j = j.getNext()) {
             if ((float) j.getWine().getValueToCompare() > (float) pivot.getWine().getValueToCompare()) {
                 i = (i == null) ? left : i.getNext();
+                this.numberOfComparisons++;
                 this.swap(i, j);
             }
+            this.numberOfComparisons++;
         }
         i = (i == null) ? left : i.getNext();
+        this.numberOfComparisons++;
         this.swap(i, right);
         return i;
     }
