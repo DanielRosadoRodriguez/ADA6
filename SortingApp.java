@@ -1,7 +1,7 @@
 /**
  * Clase principal, inicializa el programa y el menú de opciones
  */
-public class Testing2 {
+public class SortingApp {
     /**
      * 
      * Método principal de la clase Testing2 que crea instancias de Menu y DAO para
